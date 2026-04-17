@@ -21,7 +21,10 @@
 
 <div class="content">
     <h3>Welcome, Player!</h3>
-    <p>This is the user dashboard. Here you will find predictions and mini-games in the future.</p>
+    <p><strong>Coins Balance:</strong> <?php echo Security::escape($user['coins'] ?? 0); ?> 🪙</p>
+    <hr>
+    <p>This is the user dashboard. Here you will find open matches for predictions.</p>
+    <a href="/match/list" class="btn" style="background: #007bff; display: inline-block; margin-top: 10px;">Browse Matches</a>
 </div>
 
 </body>

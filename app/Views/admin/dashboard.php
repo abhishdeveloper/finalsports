@@ -22,6 +22,9 @@
 <div class="content">
     <h3>Welcome, Administrator!</h3>
     <p>This is the admin dashboard. Here you will manage users, predictions, and mini-games.</p>
+    <hr>
+    <a href="/adminMatch/index" class="btn" style="background: #007bff; display: inline-block; margin-top: 10px;">Manage Matches</a>
+    <a href="/adminMatch/results" class="btn" style="background: #dc3545; display: inline-block; margin-top: 10px;">Declare Results</a>
 </div>
 
 </body>

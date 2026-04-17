@@ -13,6 +13,7 @@ class UserController extends Controller {
     }
 
     public function index() {
-        $this->view('user/dashboard');
+        $user = $this->userModel->getById(Session::get('user_id'));
+        $this->view('user/dashboard', ['user' => $user]);
     }
 }

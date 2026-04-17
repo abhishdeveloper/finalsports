@@ -28,18 +28,31 @@ class User {
         $email = $isPhone ? null : $loginId;
         $phone = $isPhone ? $loginId : null;
 
-        $stmt = $this->db->prepare("INSERT INTO users (email, phone, password_hash, role) VALUES (:email, :phone, :password_hash, 'user')");
+        // Random coins between 1 and 500
+        $initialCoins = rand(1, 500);
+
+        $stmt = $this->db->prepare("INSERT INTO users (email, phone, password_hash, role, coins) VALUES (:email, :phone, :password_hash, 'user', :coins)");
 
         try {
             return $stmt->execute([
                 'email' => $email,
                 'phone' => $phone,
-                'password_hash' => $passwordHash
+                'password_hash' => $passwordHash,
+                'coins' => $initialCoins
             ]);
         } catch (PDOException $e) {
             // Usually duplicate entry error
             return false;
         }
+    }
+
+    /**
+     * Get user by ID
+     */
+    public function getById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch();
     }
 
     /**
