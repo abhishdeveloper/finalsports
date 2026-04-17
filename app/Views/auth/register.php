@@ -26,6 +26,9 @@
     <form action="/auth/register" method="POST">
         <input type="hidden" name="csrf_token" value="<?php echo Security::generateCSRFToken(); ?>">
 
+        <label for="username">Username (Optional):</label>
+        <input type="text" id="username" name="username">
+
         <label for="login_id">Email or Phone:</label>
         <input type="text" id="login_id" name="login_id" required>
 

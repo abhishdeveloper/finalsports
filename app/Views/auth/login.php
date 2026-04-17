@@ -31,7 +31,7 @@
     <form action="/auth/login" method="POST">
         <input type="hidden" name="csrf_token" value="<?php echo Security::generateCSRFToken(); ?>">
 
-        <label for="login_id">Email or Phone:</label>
+        <label for="login_id">Username, Email, or Phone:</label>
         <input type="text" id="login_id" name="login_id" required>
 
         <label for="password">Password:</label>
@@ -39,6 +39,10 @@
 
         <button type="submit">Login</button>
     </form>
+
+    <div class="link" style="margin-bottom: 10px;">
+        <a href="/auth/forgot">Forgot Password?</a>
+    </div>
 
     <div class="link">
         Don't have an account? <a href="/auth/register">Register</a>

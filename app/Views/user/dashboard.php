@@ -26,6 +26,8 @@
     <p>This is the user dashboard. Here you will find open matches for predictions and mini-games.</p>
     <a href="/match/list" class="btn" style="background: #007bff; display: inline-block; margin-top: 10px;">Predict Matches</a>
     <a href="/game/index" class="btn" style="background: #28a745; display: inline-block; margin-top: 10px; margin-left: 10px;">Play Mini Games</a>
+    <hr style="margin-top: 20px;">
+    <a href="/user/settings" class="btn" style="background: #17a2b8; display: inline-block; margin-top: 10px;">Account Settings</a>
 </div>
 
 </body>

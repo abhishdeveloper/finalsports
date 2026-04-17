@@ -1,2 +1,4 @@
 php_server.log
 database/app.sqlite
+vendor/
+composer.lock

@@ -6,6 +6,7 @@ $core_files = [
     CORE_DIR . '/Database.php', // We will create this
     APP_DIR . '/Helpers/Security.php', // We will create this
     APP_DIR . '/Helpers/Session.php', // We will create this
+    APP_DIR . '/Helpers/MailHelper.php', // Added for mailing
 ];
 
 foreach ($core_files as $file) {
