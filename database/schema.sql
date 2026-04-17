@@ -64,5 +64,33 @@ CREATE TABLE IF NOT EXISTS `predictions` (
   UNIQUE KEY `idx_participant_question` (`participant_id`, `question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS `games` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(100) NOT NULL,
+  `slug` VARCHAR(50) NOT NULL UNIQUE,
+  `status` ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `game_rooms` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `game_id` INT NOT NULL,
+  `player1_id` INT NOT NULL,
+  `player2_id` INT DEFAULT NULL,
+  `entry_fee` INT NOT NULL DEFAULT 0,
+  `status` ENUM('waiting', 'playing', 'completed', 'cancelled') NOT NULL DEFAULT 'waiting',
+  `game_state` TEXT DEFAULT NULL,
+  `current_turn` INT DEFAULT NULL,
+  `winner_id` INT DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (`game_id`) REFERENCES `games`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`player1_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`player2_id`) REFERENCES `users`(`id`) ON DELETE SET NULL,
+  FOREIGN KEY (`winner_id`) REFERENCES `users`(`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT IGNORE INTO `games` (`name`, `slug`) VALUES ('Penalty Shootout', 'football');
+
 -- Optional: Initial admin user (password needs to be hashed in a real scenario, this is just structural)
 -- INSERT INTO `users` (`email`, `password_hash`, `role`) VALUES ('admin@example.com', '$2y$10$YourHashedPasswordHere', 'admin');

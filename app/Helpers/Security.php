@@ -34,7 +34,7 @@ class Security {
      * HTML escape to prevent XSS
      */
     public static function escape($string) {
-        return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return htmlspecialchars((string)$string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
 
     /**

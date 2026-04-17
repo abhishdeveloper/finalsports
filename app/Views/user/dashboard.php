@@ -23,8 +23,9 @@
     <h3>Welcome, Player!</h3>
     <p><strong>Coins Balance:</strong> <?php echo Security::escape($user['coins'] ?? 0); ?> 🪙</p>
     <hr>
-    <p>This is the user dashboard. Here you will find open matches for predictions.</p>
-    <a href="/match/list" class="btn" style="background: #007bff; display: inline-block; margin-top: 10px;">Browse Matches</a>
+    <p>This is the user dashboard. Here you will find open matches for predictions and mini-games.</p>
+    <a href="/match/list" class="btn" style="background: #007bff; display: inline-block; margin-top: 10px;">Predict Matches</a>
+    <a href="/game/index" class="btn" style="background: #28a745; display: inline-block; margin-top: 10px; margin-left: 10px;">Play Mini Games</a>
 </div>
 
 </body>
